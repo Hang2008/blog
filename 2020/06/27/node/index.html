@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>装nginx之前 | 亢亢兮的house</title>
+    <meta name="description" content="
+本地安装: 感觉会污染本地系统
+远程服务器，到期了，没有的用，有的用也不是很方便
+考虑docker, 据说轻量级
+Mac安装docker+nginx
+下载docker安装包并安装
+拉取centos镜像(这里是lastest是8)
+docker pull centos
+启动centos容器
+
+&gt; docker run [OPTIONS] IMAGE [ ...">
+    <meta name="generator" content="VuePress 1.4.0">
+    
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.7ea20a05.css" as="style"><link rel="preload" href="/blog/assets/js/app.5bbe13a6.js" as="script"><link rel="preload" href="/blog/assets/js/7.126d0200.js" as="script"><link rel="preload" href="/blog/assets/js/4.c23d506f.js" as="script"><link rel="preload" href="/blog/assets/js/21.0d11a637.js" as="script"><link rel="prefetch" href="/blog/assets/js/1.e2ab5446.js"><link rel="prefetch" href="/blog/assets/js/10.e8c02250.js"><link rel="prefetch" href="/blog/assets/js/11.c5d4eb0d.js"><link rel="prefetch" href="/blog/assets/js/12.36681711.js"><link rel="prefetch" href="/blog/assets/js/13.eab99fba.js"><link rel="prefetch" href="/blog/assets/js/14.9b39bfe1.js"><link rel="prefetch" href="/blog/assets/js/15.dbbba69e.js"><link rel="prefetch" href="/blog/assets/js/16.ee9570c8.js"><link rel="prefetch" href="/blog/assets/js/17.de114c5e.js"><link rel="prefetch" href="/blog/assets/js/18.d268968e.js"><link rel="prefetch" href="/blog/assets/js/19.b473fc27.js"><link rel="prefetch" href="/blog/assets/js/20.03d31a69.js"><link rel="prefetch" href="/blog/assets/js/22.034c2fa8.js"><link rel="prefetch" href="/blog/assets/js/23.38903bb7.js"><link rel="prefetch" href="/blog/assets/js/5.25135b66.js"><link rel="prefetch" href="/blog/assets/js/6.f45fa096.js"><link rel="prefetch" href="/blog/assets/js/8.adccfb62.js"><link rel="prefetch" href="/blog/assets/js/9.f71868e4.js"><link rel="prefetch" href="/blog/assets/js/vuejs-paginate.00128b2d.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.7ea20a05.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-blog__global-layout"><section id="header-wrapper"><header id="header"><div class="header-wrapper"><div class="title"><a href="/blog/" class="nav-link home-link">亢亢兮的house </a></div> <div class="header-right-wrap"><ul class="nav"><li class="nav-item"><a href="/blog/" class="nav-link">博客</a></li><li class="nav-item"><a href="/blog/tag/" class="nav-link">标签</a></li></ul> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></div></header></section> <div id="mobile-header"><div class="mobile-header-bar"><div class="mobile-header-title"><a href="/blog/" class="nav-link mobile-home-link">亢亢兮的house </a> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div> <div class="mobile-menu-wrapper"><hr class="menu-divider"> <ul class="mobile-nav"><li class="mobile-nav-item"><a href="/blog/" class="nav-link">博客</a></li><li class="mobile-nav-item"><a href="/blog/tag/" class="nav-link">标签</a></li> <li class="mobile-nav-item"><!----></li></ul></div></div></div> <div class="content-wrapper"><div id="vuepress-theme-blog__post-layout"><article itemscope="itemscope" itemtype="https://schema.org/BlogPosting" class="vuepress-blog-theme-content"><header><h1 itemprop="name headline" class="post-title">
+        
+      </h1> <div class="post-meta"><div itemprop="publisher author" itemtype="http://schema.org/Person" itemscope="itemscope" class="post-meta-author"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-navigation"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg> <span itemprop="name">亢亢兮</span> <!----></div> <div class="post-meta-date"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> <time pubdate itemprop="datePublished" datetime="2020-6-27">
+      Sat Jun 27 2020
+    </time></div> <ul itemprop="keywords" class="post-meta-tags"><li class="post-tag" data-v-25dfc3b6><a href="/blog/tag/后端" data-v-25dfc3b6> 后端 </a></li><li class="post-tag" data-v-25dfc3b6><a href="/blog/tag/技术" data-v-25dfc3b6> 技术 </a></li></ul></div></header> <div itemprop="articleBody" class="content__default"><h1 id="装nginx之前"><a href="#装nginx之前" class="header-anchor">#</a> 装nginx之前</h1> <p>本地安装: 感觉会污染本地系统
+远程服务器，到期了，没有的用，有的用也不是很方便
+考虑docker, 据说轻量级</p> <h1 id="mac安装docker-nginx"><a href="#mac安装docker-nginx" class="header-anchor">#</a> Mac安装docker+nginx</h1> <h2 id="下载docker安装包并安装"><a href="#下载docker安装包并安装" class="header-anchor">#</a> 下载docker安装包并安装</h2> <h2 id="拉取centos镜像-这里是lastest是8"><a href="#拉取centos镜像-这里是lastest是8" class="header-anchor">#</a> 拉取centos镜像(这里是lastest是8)</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>docker pull centos
+</code></pre></div><h2 id="启动centos容器"><a href="#启动centos容器" class="header-anchor">#</a> 启动centos容器</h2> <blockquote><p>docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+OPTIONS
+-i: 以交互模式运行容器，通常与 -t 同时使用；
+-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用;
+-d: 后台运行容器，并返回容器ID;</p></blockquote> <h3 id="常用命令"><a href="#常用命令" class="header-anchor">#</a> 常用命令</h3> <p>查看docker中的所有镜像的名称</p> <div class="language-bash extra-class"><pre class="language-bash"><code>docker image <span class="token function">ls</span>
+docker images
+</code></pre></div><p>删除image</p> <div class="language-bash extra-class"><pre class="language-bash"><code>docker rmi imageid
+</code></pre></div><p>查看docker中所有的容器</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">(</span>base<span class="token punctuation">)</span> bogon:~ lihang$ docker <span class="token function">ps</span>
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
+dfdc7f6471cb        nginx               <span class="token string">&quot;/docker-entrypoint.…&quot;</span>   <span class="token number">6</span> hours ago         Up <span class="token number">6</span> hours          <span class="token number">0.0</span>.0.0:8080-<span class="token operator">&gt;</span><span class="token number">80</span>/tcp   nginx-test
+<span class="token punctuation">(</span>base<span class="token punctuation">)</span> bogon:~ lihang$ docker <span class="token function">ps</span> -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+dfdc7f6471cb        nginx               <span class="token string">&quot;/docker-entrypoint.…&quot;</span>   <span class="token number">6</span> hours ago         Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">50</span> seconds ago                       nginx-test
+fc4809da3b0f        centos:latest       <span class="token string">&quot;/usr/sbin/init&quot;</span>         <span class="token number">3</span> days ago          Exited <span class="token punctuation">(</span><span class="token number">137</span><span class="token punctuation">)</span> <span class="token number">6</span> hours ago                        cntest
+</code></pre></div><p>查看报错， 也可以在docker桌面中看log</p> <div class="language-bash extra-class"><pre class="language-bash"><code>docker logs -f container_id
+</code></pre></div><p>查看container详情、</p> <div class="language-bash extra-class"><pre class="language-bash"><code>docker inspect container_id
+</code></pre></div><h3 id="最佳实践"><a href="#最佳实践" class="header-anchor">#</a> 最佳实践</h3> <p>支持systemctl，否则要用回报错
+<em>System has not been booted with systemd as init system (PID 1). Can't operat</em></p> <div class="language-bash extra-class"><pre class="language-bash"><code>docker run -itd -p <span class="token number">8081</span>:80 --privileged --name cntest centos:latest /usr/sbin/init
+</code></pre></div><p>安装名称为nginx的容器，以下方式没有systemctl权限</p> <div class="language-bash extra-class"><pre class="language-bash"><code>docker run -itd --name nginx centos:latest /bin/bash
+</code></pre></div><p>或安装指定版本</p> <div class="language-bash extra-class"><pre class="language-bash"><code>docker run -itd --name nginx centos:centos7 /bin/bash
+</code></pre></div><blockquote><p>docker container update --restart=always 容器名字
+可以用来在不删除container的情况下修改--restart=always
+控制台输入查看容器id hash
+修改配置文件
+/var/lib/docker/containers/[hash_of_the_container]/hostconfig.json</p></blockquote> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">(</span>base<span class="token punctuation">)</span> bogon:~ lihang$ docker <span class="token builtin class-name">exec</span> -it nginx /bin/bash
+<span class="token punctuation">[</span>root@b445803a3084 /<span class="token punctuation">]</span><span class="token comment"># </span>
+</code></pre></div><p>报错
+[FAILED] Failed to start Crash recovery kernel arming.
+可能因为docker给虚拟机系统分配的内存&lt;8G, 则crashkernel=auto，导致kdump kernel被关闭，这个对于本地试验应该不重要</p> <h3 id="注意"><a href="#注意" class="header-anchor">#</a> 注意</h3> <blockquote><p>不要在docker dashbord中打开centos控制台
+这种方式登陆属于非login登录环境变量配置无法生效
+登陆后显示用户sh-4.4#
+sh表示shell环境，4.4表示版本号,#表示管理员</p></blockquote> <h2 id="安装nginx步骤"><a href="#安装nginx步骤" class="header-anchor">#</a> 安装nginx步骤</h2> <h3 id="安装编译环境"><a href="#安装编译环境" class="header-anchor">#</a> 安装编译环境</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>yum -y <span class="token function">install</span> gcc-c++
+</code></pre></div><h3 id="安装第三方模块"><a href="#安装第三方模块" class="header-anchor">#</a> 安装第三方模块</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>yum -y <span class="token function">install</span> pcre pcre-devel zlib zlib-devel openssl openssl-devel
+</code></pre></div><h3 id="下载nginx"><a href="#下载nginx" class="header-anchor">#</a> 下载nginx</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>yum -y <span class="token function">install</span> <span class="token function">wget</span>
+<span class="token function">wget</span> -c https://nginx.org/download/nginx-1.16.1.tar.gz
+</code></pre></div><p>或下载到指定目录</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">wget</span> -O /temp/nginx.tar.gz https://nginx.org/download/nginx-1.16.1.tar.gz
+</code></pre></div><p>解压</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">tar</span> -zxvf nginx-1.16.1.tar.gz
+</code></pre></div><p>进入目录</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> nginx-1.16.1
+</code></pre></div><h3 id="配置安装路径（默认路径就是usr-local-nginx）"><a href="#配置安装路径（默认路径就是usr-local-nginx）" class="header-anchor">#</a> 配置安装路径（默认路径就是usr/local/nginx）</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>./configure --prefix<span class="token operator">=</span>/usr/local/nginx
+</code></pre></div><h3 id="编译和安装"><a href="#编译和安装" class="header-anchor">#</a> 编译和安装</h3> <p>安装make</p> <div class="language-bash extra-class"><pre class="language-bash"><code>yum -y <span class="token function">install</span> gcc automake autoconf libtool <span class="token function">make</span>
+</code></pre></div><p>编译</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">make</span>
+</code></pre></div><p>安装</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">make</span> <span class="token function">install</span>
+</code></pre></div><h3 id="运行nginx"><a href="#运行nginx" class="header-anchor">#</a> 运行nginx</h3> <p>进入nginx目录/usr/local/nginx/sbin</p> <div class="language-bash extra-class"><pre class="language-bash"><code>./nginx
+</code></pre></div><p>查看nginx进程</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">ps</span> -ef <span class="token operator">|</span><span class="token function">grep</span> nginx
+</code></pre></div><div class="language-bash extra-class"><pre class="language-bash"><code>sh-4.4<span class="token comment"># ps -ef |grep nginx</span>
+root      <span class="token number">2699</span>     <span class="token number">1</span>  <span class="token number">0</span> <span class="token number">15</span>:12 ?        00:00:00 nginx: master process ./nginx
+nobody    <span class="token number">2700</span>  <span class="token number">2699</span>  <span class="token number">0</span> <span class="token number">15</span>:12 ?        00:00:00 nginx: worker process
+root      <span class="token number">2702</span>    <span class="token number">16</span>  <span class="token number">0</span> <span class="token number">15</span>:12 pts/1    00:00:00 <span class="token function">grep</span> nginx
+</code></pre></div><p>停止nginx</p> <div class="language-bash extra-class"><pre class="language-bash"><code>./nginx -s stop
+</code></pre></div><h3 id="配置profile"><a href="#配置profile" class="header-anchor">#</a> 配置profile</h3> <p>安装vim</p> <div class="language-bash extra-class"><pre class="language-bash"><code>yum <span class="token function">install</span> -y <span class="token function">vim</span>
+</code></pre></div><p>配置环境变量</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">vim</span> /etc/profile
+shift+g 跳转到最后一行增加配置
+<span class="token assign-left variable">NGINX_HOME</span><span class="token operator">=</span>/usr/local/nginx
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$NGINX_HOME</span>/sbin
+</code></pre></div><p>使环境变量生效</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@b445803a3084 /<span class="token punctuation">]</span><span class="token comment"># source /etc/profile</span>
+<span class="token punctuation">[</span>root@b445803a3084 /<span class="token punctuation">]</span><span class="token comment"># nginx</span>
+<span class="token punctuation">[</span>root@b445803a3084 /<span class="token punctuation">]</span><span class="token comment"># ps -ef |grep nginx</span>
+root        <span class="token number">49</span>     <span class="token number">1</span>  <span class="token number">0</span> <span class="token number">14</span>:45 ?        00:00:00 nginx: master process nginx
+nobody      <span class="token number">50</span>    <span class="token number">49</span>  <span class="token number">0</span> <span class="token number">14</span>:45 ?        00:00:00 nginx: worker process
+root        <span class="token number">52</span>    <span class="token number">16</span>  <span class="token number">0</span> <span class="token number">14</span>:46 pts/1    00:00:00 <span class="token function">grep</span> --color<span class="token operator">=</span>auto nginx
+</code></pre></div><h3 id="配置不生效的原因"><a href="#配置不生效的原因" class="header-anchor">#</a> 配置不生效的原因</h3> <p><em><strong>因为docker打开的shell不是登录式
+必须是登陆式才能使etc/profile生效</strong></em>
+查看是否登录式</p> <div class="language-bash extra-class"><pre class="language-bash"><code>sh-4.4<span class="token comment"># shopt login_shell</span>
+login_shell    	off
+</code></pre></div><p>无效尝试1：在/etc/profile.d中增加脚本nginx.sh
+无效尝试2：/etc/profile中写在最后一行或者直接拼接$PATH
+<em><strong>所以用命令行登录才能是登录模式</strong></em></p> <h3 id="可选：配置防火墙-最佳实践不需要配置防火墙就能访问nginx了"><a href="#可选：配置防火墙-最佳实践不需要配置防火墙就能访问nginx了" class="header-anchor">#</a> 可选：配置防火墙(最佳实践不需要配置防火墙就能访问nginx了)</h3> <p>查看ip地址</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@b445803a3084 /<span class="token punctuation">]</span><span class="token comment"># ip a</span>
+<span class="token number">1</span>: lo: <span class="token operator">&lt;</span>LOOPBACK,UP,LOWER_UP<span class="token operator">&gt;</span> mtu <span class="token number">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="token number">1000</span>
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet <span class="token number">127.0</span>.0.1/8 scope <span class="token function">host</span> lo
+       valid_lft forever preferred_lft forever
+<span class="token number">2</span>: tunl0@NONE: <span class="token operator">&lt;</span>NOARP<span class="token operator">&gt;</span> mtu <span class="token number">1480</span> qdisc noop state DOWN group default qlen <span class="token number">1000</span>
+    link/ipip <span class="token number">0.0</span>.0.0 brd <span class="token number">0.0</span>.0.0
+<span class="token number">3</span>: ip6tnl0@NONE: <span class="token operator">&lt;</span>NOARP<span class="token operator">&gt;</span> mtu <span class="token number">1452</span> qdisc noop state DOWN group default qlen <span class="token number">1000</span>
+    link/tunnel6 :: brd ::
+<span class="token number">30</span>: eth0@if31: <span class="token operator">&lt;</span>BROADCAST,MULTICAST,UP,LOWER_UP<span class="token operator">&gt;</span> mtu <span class="token number">1500</span> qdisc noqueue state UP group default 
+    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff link-netnsid <span class="token number">0</span>
+    inet <span class="token number">172.17</span>.0.2/16 brd <span class="token number">172.17</span>.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+</code></pre></div><p>或**<em>推荐</em>**宿主机控制台执行</p> <div class="language-bash extra-class"><pre class="language-bash"><code>docker inspect nginx
+</code></pre></div><p>安装防火墙和dbus</p> <div class="language-bash extra-class"><pre class="language-bash"><code>yum <span class="token function">install</span> firewalld 
+</code></pre></div><p>开启防火墙</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@fc4809da3b0f /<span class="token punctuation">]</span><span class="token comment"># systemctl status firewalld</span>
+● firewalld.service - firewalld - dynamic firewall daemon
+   Loaded: loaded <span class="token punctuation">(</span>/usr/lib/systemd/system/firewalld.service<span class="token punctuation">;</span> enabled<span class="token punctuation">;</span> vendor preset: enabled<span class="token punctuation">)</span>
+   Active: inactive <span class="token punctuation">(</span>dead<span class="token punctuation">)</span>
+     Docs: man:firewalld<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span>root@fc4809da3b0f /<span class="token punctuation">]</span><span class="token comment"># systemctl start firewalld</span>
+</code></pre></div><p>查看开放端口</p> <div class="language-bash extra-class"><pre class="language-bash"><code>firewall-cmd --zone<span class="token operator">=</span>public --list-ports
+</code></pre></div><p>永久开放80端口</p> <div class="language-bash extra-class"><pre class="language-bash"><code>firewall-cmd --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">80</span>/tcp --permanent
+</code></pre></div><h2 id="到这里报错啊还不知道什么原因"><a href="#到这里报错啊还不知道什么原因" class="header-anchor">#</a> 到这里报错啊还不知道什么原因</h2> <p>宿主机浏览器访问172.17.0.2
+Jun 25 08:07:55 fc4809da3b0f systemd[1]: Starting firewalld - dynamic firewall daemon...
+Jun 25 08:07:55 fc4809da3b0f systemd[1]: Started firewalld - dynamic firewall daemon.
+Jun 25 08:07:55 fc4809da3b0f firewalld[2948]: WARNING: AllowZoneDrifting is enabled. This is considered an insecure configuration optio&gt;
+Jun 25 08:07:56 fc4809da3b0f firewalld[2948]: ERROR: 'python-nftables' failed: internal:0:0-0: Error: Could not process rule: No such f&gt;<br>
+internal:0:0-0: Error: Could not process rule: No such file or directory
+internal:0:0-0: Error: Could not process rule: No such file or directory</p> <p>可能原因是ip地址都是错的
+通过ip地址访问要输入的是宿主机的ip 然后要做一个端口映射，老师教的因为他用的是真实的云服务器centos地址所以内部开启80端口后就可以访问了</p> <h3 id="映射端口-推荐"><a href="#映射端口-推荐" class="header-anchor">#</a> 映射端口(推荐)</h3> <p>全部重来
+在创建时映射(最佳实践)</p> <div class="language-bash extra-class"><pre class="language-bash"><code>docker run -itd -p <span class="token number">8081</span>:80 --privileged --name cntest centos:latest /usr/sbin/init
+</code></pre></div><h3 id="修改配置文件-不推荐"><a href="#修改配置文件-不推荐" class="header-anchor">#</a> 修改配置文件(不推荐)</h3> <p><a href="https://blog.csdn.net/chi0830/article/details/100590056" target="_blank" rel="noopener noreferrer">参考<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+因为之前已经存在容器没有映射端口所有采用修改容器配置文件中端口的方法
+查看端口号和容器id</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">(</span>base<span class="token punctuation">)</span> bogon:/ lihang$ docker container port cntest
+<span class="token punctuation">(</span>base<span class="token punctuation">)</span> bogon:/ lihang$
+<span class="token punctuation">(</span>base<span class="token punctuation">)</span> bogon:/ lihang$ docker stop cntest
+<span class="token punctuation">(</span>base<span class="token punctuation">)</span> bogon:~ lihang$ docker inspect cntest
+</code></pre></div><p>修改文件太麻烦，先要找到文件然后考出来还要格式化
+在宿主机中修改没有配端口的配置文件
+步骤</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> ~/Library/Containers/com.docker.docker/Data/vms/0/
+<span class="token function">screen</span> <span class="token function">tty</span>
+<span class="token function">cat</span> /var/lib/docker/containers/<span class="token variable">${container_id}</span>/hostconfig.json
+</code></pre></div><div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;Binds&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;ContainerIDFile&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;LogConfig&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;Type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;json-file&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;Config&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;NetworkMode&quot;</span><span class="token operator">:</span> <span class="token string">&quot;default&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;PortBindings&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;RestartPolicy&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;Name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;no&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;MaximumRetryCount&quot;</span><span class="token operator">:</span> <span class="token number">0</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;AutoRemove&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;VolumeDriver&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;VolumesFrom&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;CapAdd&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;CapDrop&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;Capabilities&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;Dns&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;DnsOptions&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;DnsSearch&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;ExtraHosts&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;GroupAdd&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;IpcMode&quot;</span><span class="token operator">:</span> <span class="token string">&quot;private&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;Cgroup&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;Links&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;OomScoreAdj&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;PidMode&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;Privileged&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;PublishAllPorts&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;ReadonlyRootfs&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;SecurityOpt&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;label=disable&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;UTSMode&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;UsernsMode&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;ShmSize&quot;</span><span class="token operator">:</span> <span class="token number">67108864</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;Runtime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;runc&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;ConsoleSize&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;Isolation&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;CpuShares&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;Memory&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;NanoCpus&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;CgroupParent&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;BlkioWeight&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;BlkioWeightDevice&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;BlkioDeviceReadBps&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;BlkioDeviceWriteBps&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;BlkioDeviceReadIOps&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;BlkioDeviceWriteIOps&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;CpuPeriod&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;CpuQuota&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;CpuRealtimePeriod&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;CpuRealtimeRuntime&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;CpusetCpus&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;CpusetMems&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;Devices&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;DeviceCgroupRules&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;DeviceRequests&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;KernelMemory&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;KernelMemoryTCP&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;MemoryReservation&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;MemorySwap&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;MemorySwappiness&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;OomKillDisable&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;PidsLimit&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;Ulimits&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;CpuCount&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;CpuPercent&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;IOMaximumIOps&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;IOMaximumBandwidth&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;MaskedPaths&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;ReadonlyPaths&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h1 id="docker直接安装nginx"><a href="#docker直接安装nginx" class="header-anchor">#</a> Docker直接安装nginx</h1> <h2 id="安装"><a href="#安装" class="header-anchor">#</a> 安装</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>docker pull nginx:latest
+docker run --name nginx-test -p <span class="token number">8080</span>:80 -d nginx
+</code></pre></div><blockquote><p>参数说明：</p></blockquote> <ul><li>--name nginx-test：容器名称。</li> <li>-p 8080:80： 端口进行映射，将本地 8080 端口映射到容器内部的 80 端口。</li> <li>P(大写)是开放容器所有的端口到主机上一个随机的端口.</li> <li>-d nginx： 设置容器在在后台一直运行。</li></ul> <h2 id="访问"><a href="#访问" class="header-anchor">#</a> 访问</h2> <p>因为将宿主机的端口8080映射到了80，访问方式是宿主机ip:8080
+http://192.168.1.100:8080/</p> <h1 id="nginx-配置"><a href="#nginx-配置" class="header-anchor">#</a> Nginx 配置</h1> <p>修改配置文件
+/usr/local/nginx/conf/nginx.conf
+http中增加虚拟主机</p> <div class="language-config extra-class"><pre class="language-text"><code># 虚拟主机
+server {
+    # 端口
+    listen 80;
+    # 主机名
+    server_name aaa.domain.com;
+    # combined是日志默认格式
+    access_log logs/aaa.domain.com.access.log combined;
+
+    location / {
+        index index.html index.php;
+        root /data/htdocs/aaa.domain.com;
+    }
+}
+</code></pre></div><p>保存退出后在nginx http目录中创建文件</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@204aba96727c html<span class="token punctuation">]</span><span class="token comment"># mkdir -p /data/htdocs/aaa.domain.com</span>
+<span class="token punctuation">[</span>root@204aba96727c html<span class="token punctuation">]</span><span class="token comment"># ls</span>
+50x.html  index.html
+<span class="token punctuation">[</span>root@204aba96727c html<span class="token punctuation">]</span><span class="token comment"># cd /data/htdocs/aaa.domain.com</span>
+<span class="token punctuation">[</span>root@204aba96727c aaa.domain.com<span class="token punctuation">]</span><span class="token comment"># ls</span>
+<span class="token punctuation">[</span>root@204aba96727c aaa.domain.com<span class="token punctuation">]</span><span class="token comment"># vim index,html</span>
+</code></pre></div><p>增加以下html后，修改主机宿主机host，使虚拟主机域名映射到本机ip地址
+#配置docker中的nginx虚拟机域名映射到本机ip
+192.168.1.100 aaa.domain.com
+配置好后重启nginx服务，浏览器中访问
+http://aaa.domain.com:8081/</p> <h2 id="todo"><a href="#todo" class="header-anchor">#</a> TODO</h2> <p>本地ssh链接centos步骤
+输入cat /etc/hosts课查看ip地址
+输入yum install openssh-server -y安装
+输入yum install initscripts</p> <p>Redis
+保存在内存中，快速读取
+支持多端同时访问</p> <p>简介
+远程内存数据库，非关系型数据库
+以键值对方式存储，支持5中不同类型数据
+可以持久化到硬盘
+支持把数据存储到多台机器，可以从多台机器读取数据库</p> <p>MongoDb
+非关系型数据库，类似json的扩展出自己用的bson数据进行存储
+基于分布式的，给web应用使用，可扩展性高
+主要用于海量数据存储<br>
+数据量大时体现优势</p></div> <footer><!----> <hr> <!----></footer></article> <div class="sticker vuepress-toc"><div class="vuepress-toc-item vuepress-toc-h2 active"><a href="#下载docker安装包并安装" title="下载docker安装包并安装">下载docker安装包并安装</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#拉取centos镜像-这里是lastest是8" title="拉取centos镜像(这里是lastest是8)">拉取centos镜像(这里是lastest是8)</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#启动centos容器" title="启动centos容器">启动centos容器</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#常用命令" title="常用命令">常用命令</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#最佳实践" title="最佳实践">最佳实践</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#注意" title="注意">注意</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#安装nginx步骤" title="安装nginx步骤">安装nginx步骤</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#安装编译环境" title="安装编译环境">安装编译环境</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#安装第三方模块" title="安装第三方模块">安装第三方模块</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#下载nginx" title="下载nginx">下载nginx</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#配置安装路径（默认路径就是usr-local-nginx）" title="配置安装路径（默认路径就是usr/local/nginx）">配置安装路径（默认路径就是usr/local/nginx）</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#编译和安装" title="编译和安装">编译和安装</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#运行nginx" title="运行nginx">运行nginx</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#配置profile" title="配置profile">配置profile</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#配置不生效的原因" title="配置不生效的原因">配置不生效的原因</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#可选：配置防火墙-最佳实践不需要配置防火墙就能访问nginx了" title="可选：配置防火墙(最佳实践不需要配置防火墙就能访问nginx了)">可选：配置防火墙(最佳实践不需要配置防火墙就能访问nginx了)</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#到这里报错啊还不知道什么原因" title="到这里报错啊还不知道什么原因">到这里报错啊还不知道什么原因</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#映射端口-推荐" title="映射端口(推荐)">映射端口(推荐)</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#修改配置文件-不推荐" title="修改配置文件(不推荐)">修改配置文件(不推荐)</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#安装" title="安装">安装</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#访问" title="访问">访问</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#todo" title="TODO">TODO</a></div></div></div></div> <footer class="footer" data-v-f0201fb2><div class="footer-left-wrap" data-v-f0201fb2><ul class="contact" data-v-f0201fb2><li class="contact-item" data-v-f0201fb2><a href="https://github.com/ulivz" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-f0201fb2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github" data-v-f0201fb2><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" data-v-f0201fb2></path></svg>
+          
+        </a></li><li class="contact-item" data-v-f0201fb2><a href="https://twitter.com/_ulivz" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-f0201fb2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter" data-v-f0201fb2><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" data-v-f0201fb2></path></svg>
+          
+        </a></li></ul></div> <div class="footer-right-wrap" data-v-f0201fb2><ul class="copyright" data-v-f0201fb2><li class="copyright-item" data-v-f0201fb2><a href="https://policies.google.com/privacy?hl=en-US" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-f0201fb2>Privacy Policy</a></li><li class="copyright-item" data-v-f0201fb2><a href="/blog/2020/06/27/node/.html" class="nav-link" data-v-f0201fb2>MIT Licensed | Copyright © 2018-present Vue.js</a></li></ul></div></footer></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.5bbe13a6.js" defer></script><script src="/blog/assets/js/7.126d0200.js" defer></script><script src="/blog/assets/js/4.c23d506f.js" defer></script><script src="/blog/assets/js/21.0d11a637.js" defer></script>
+  </body>
+</html>

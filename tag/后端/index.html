@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>后端 Tag | 亢亢兮的house</title>
+    <meta name="description" content="This is a blog example built by VuePress">
+    <meta name="generator" content="VuePress 1.4.0">
+    
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.7ea20a05.css" as="style"><link rel="preload" href="/blog/assets/js/app.5bbe13a6.js" as="script"><link rel="preload" href="/blog/assets/js/7.126d0200.js" as="script"><link rel="preload" href="/blog/assets/js/15.dbbba69e.js" as="script"><link rel="preload" href="/blog/assets/js/8.adccfb62.js" as="script"><link rel="prefetch" href="/blog/assets/js/1.e2ab5446.js"><link rel="prefetch" href="/blog/assets/js/10.e8c02250.js"><link rel="prefetch" href="/blog/assets/js/11.c5d4eb0d.js"><link rel="prefetch" href="/blog/assets/js/12.36681711.js"><link rel="prefetch" href="/blog/assets/js/13.eab99fba.js"><link rel="prefetch" href="/blog/assets/js/14.9b39bfe1.js"><link rel="prefetch" href="/blog/assets/js/16.ee9570c8.js"><link rel="prefetch" href="/blog/assets/js/17.de114c5e.js"><link rel="prefetch" href="/blog/assets/js/18.d268968e.js"><link rel="prefetch" href="/blog/assets/js/19.b473fc27.js"><link rel="prefetch" href="/blog/assets/js/20.03d31a69.js"><link rel="prefetch" href="/blog/assets/js/21.0d11a637.js"><link rel="prefetch" href="/blog/assets/js/22.034c2fa8.js"><link rel="prefetch" href="/blog/assets/js/23.38903bb7.js"><link rel="prefetch" href="/blog/assets/js/4.c23d506f.js"><link rel="prefetch" href="/blog/assets/js/5.25135b66.js"><link rel="prefetch" href="/blog/assets/js/6.f45fa096.js"><link rel="prefetch" href="/blog/assets/js/9.f71868e4.js"><link rel="prefetch" href="/blog/assets/js/vuejs-paginate.00128b2d.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.7ea20a05.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-blog__global-layout"><section id="header-wrapper"><header id="header"><div class="header-wrapper"><div class="title"><a href="/blog/" class="nav-link home-link">亢亢兮的house </a></div> <div class="header-right-wrap"><ul class="nav"><li class="nav-item"><a href="/blog/" class="nav-link">博客</a></li><li class="nav-item"><a href="/blog/tag/" class="nav-link router-link-active">标签</a></li></ul> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></div></header></section> <div id="mobile-header"><div class="mobile-header-bar"><div class="mobile-header-title"><a href="/blog/" class="nav-link mobile-home-link">亢亢兮的house </a> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div> <div class="mobile-menu-wrapper"><hr class="menu-divider"> <ul class="mobile-nav"><li class="mobile-nav-item"><a href="/blog/" class="nav-link">博客</a></li><li class="mobile-nav-item"><a href="/blog/tag/" class="nav-link router-link-active">标签</a></li> <li class="mobile-nav-item"><!----></li></ul></div></div></div> <div class="content-wrapper"><div><div id="base-list-layout"><div itemscope="itemscope" itemtype="http://schema.org/Blog" class="ui-posts"><article itemprop="blogPost" itemscope="itemscope" itemtype="https://schema.org/BlogPosting" class="ui-post"><meta itemprop="mainEntityOfPage" content="/2020/06/27/node/"> <header itemprop="name headline" class="ui-post-title"><a href="/blog/2020/06/27/node/" class="nav-link">装nginx之前</a></header> <p itemprop="description" class="ui-post-summary">
+        
+本地安装: 感觉会污染本地系统
+远程服务器，到期了，没有的用，有的用也不是很方便
+考虑docker, 据说轻量级
+Mac安装docker+nginx
+下载docker安装包并安装
+拉取centos镜像(这里是lastest是8)
+docker pull centos
+启动centos容器
+
+&gt; docker run [OPTIONS] IMAGE [ ...
+        </p> <footer><div itemprop="publisher author" itemtype="http://schema.org/Person" itemscope="itemscope" class="ui-post-meta ui-post-author"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-navigation"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg> <span itemprop="name">亢亢兮</span> <!----></div> <div class="ui-post-meta ui-post-date"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> <time pubdate itemprop="datePublished" datetime="2020-6-27">
+            Sat Jun 27 2020
+          </time></div> <div itemprop="keywords" class="ui-post-meta ui-post-tag"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg> <a href="/blog/tag/后端" class="router-link-exact-active router-link-active">
+            后端
+          </a><a href="/blog/tag/技术">
+            技术
+          </a></div></footer></article></div> <!----></div></div></div> <footer class="footer" data-v-f0201fb2><div class="footer-left-wrap" data-v-f0201fb2><ul class="contact" data-v-f0201fb2><li class="contact-item" data-v-f0201fb2><a href="https://github.com/ulivz" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-f0201fb2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github" data-v-f0201fb2><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" data-v-f0201fb2></path></svg>
+          
+        </a></li><li class="contact-item" data-v-f0201fb2><a href="https://twitter.com/_ulivz" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-f0201fb2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter" data-v-f0201fb2><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" data-v-f0201fb2></path></svg>
+          
+        </a></li></ul></div> <div class="footer-right-wrap" data-v-f0201fb2><ul class="copyright" data-v-f0201fb2><li class="copyright-item" data-v-f0201fb2><a href="https://policies.google.com/privacy?hl=en-US" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-f0201fb2>Privacy Policy</a></li><li class="copyright-item" data-v-f0201fb2><a href="/blog/tag/后端/.html" class="nav-link" data-v-f0201fb2>MIT Licensed | Copyright © 2018-present Vue.js</a></li></ul></div></footer></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.5bbe13a6.js" defer></script><script src="/blog/assets/js/7.126d0200.js" defer></script><script src="/blog/assets/js/15.dbbba69e.js" defer></script><script src="/blog/assets/js/8.adccfb62.js" defer></script>
+  </body>
+</html>
